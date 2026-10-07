@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Grafo {
     private ArrayList<HashSet<Integer>> vecinos;
-    private Set<Arista> aristas;
+    private TreeSet<Arista> aristas;
 
     public Grafo(int cantidadVertices) {
         vecinos = new ArrayList<HashSet<Integer>>();
-        aristas = new HashSet<>();
+        aristas = new TreeSet<>();
         for (int i = 0; i < cantidadVertices; i++)
             vecinos.add(new HashSet<Integer>());
     }
@@ -56,4 +56,5 @@ public class Grafo {
     public int obtenerTamano() {
         return vecinos.size();
     }
+
 }

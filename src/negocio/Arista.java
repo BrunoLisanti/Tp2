@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Arista {
+public class Arista implements Comparable<Arista>{
     private int _origen;
     private int _destino;
     private int _peso;
@@ -25,7 +25,6 @@ public class Arista {
     public Integer getPeso() {
         return _peso;
     }
-
     public Integer obtenerOrigen() {
         return _origen;
     }
@@ -48,5 +47,10 @@ public class Arista {
         int min = Math.min(_origen, _destino);
         int max = Math.max(_origen, _destino);
         return Objects.hash(min, max);
+    }
+
+    @Override
+    public int compareTo(Arista a) {
+        return _peso - a.getPeso();
     }
 }
