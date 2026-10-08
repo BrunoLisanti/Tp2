@@ -1,9 +1,6 @@
 package negocio;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 public class Arista implements Comparable<Arista>{
     private int _origen;
@@ -25,11 +22,25 @@ public class Arista implements Comparable<Arista>{
     public Integer getPeso() {
         return _peso;
     }
-    public Integer obtenerOrigen() {
+
+    public Integer getOrigen() {
         return _origen;
     }
-    public Integer obtenerDestino() {
+
+    public Integer getDestino() {
         return _destino;
+    }
+
+    public void setPeso(int peso) {
+        _peso = peso;
+    }
+
+    public void setOrigen(int origen) {
+        _origen = origen;
+    }
+
+    public void setDestino(int destino) {
+        _destino = destino;
     }
 
     @Override

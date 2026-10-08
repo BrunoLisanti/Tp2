@@ -1,12 +1,12 @@
 package negocio;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class AGM {
-    public static GrafoMatriz obtenerAGMConPrimm(GrafoMatriz grafo) {
 
-        GrafoMatriz agm = new GrafoMatriz(grafo.obtenerTamano());
+    public static Grafo obtenerAGMConPrimm(Grafo grafo) {
+
+        Grafo agm = new Grafo(grafo.obtenerTamano());
         Set<Integer> marcados = new HashSet<>();
         marcados.add(0);
 
@@ -44,4 +44,67 @@ public class AGM {
         }
         return agm;
     }
+
+    // TODO: Faltan chequeos de que el grafo sea conexo
+    public static Grafo obtenerAGMConKruskalYBFS(Grafo grafo) {
+        Grafo agm = new Grafo(grafo.obtenerTamano());
+
+        PriorityQueue<Arista> aristasOrdenadas = grafo.obtenerAristasOrdenadas();
+
+        for (int i = 0; i < grafo.obtenerTamano() - 1;) {
+            //Obtener arista de menor peso
+            Arista aristaDeMenorPeso = aristasOrdenadas.poll();
+            //Chequear que no forme circuito con bfs;
+            boolean formaCiclo = BFS.alcanzables(agm, aristaDeMenorPeso.getOrigen())
+                                    .contains(aristaDeMenorPeso.getDestino());
+            if (!formaCiclo) {
+                agm.agregarArista(aristaDeMenorPeso);
+                i++;
+            }
+        }
+        return agm;
+    }
+
+    // TODO: Faltan chequeos de que el grafo sea conexo
+    static public Grafo obtenerAGMConKruskalYUnionFind(Grafo grafo) {
+        Grafo agm = new Grafo(grafo.obtenerTamano());
+
+        PriorityQueue<Arista> aristasOrdenadas = grafo.obtenerAristasOrdenadas();
+        int[] unionFind = inicializarUnionFind(grafo.obtenerTamano());
+
+        for (int i = 0; i < grafo.obtenerTamano() - 1;) {
+            if (aristasOrdenadas.isEmpty()) { break; }
+
+            //Obtener arista de menor peso
+            Arista aristaDeMenorPeso = aristasOrdenadas.poll();
+            int raizOrigen = unionFindRaizVertice(unionFind, aristaDeMenorPeso.getOrigen());
+            int raizDestino = unionFindRaizVertice(unionFind, aristaDeMenorPeso.getDestino());
+            //Chequear que no forme circuito con union find;
+            boolean formaCiclo = raizOrigen == raizDestino;
+
+            if (!formaCiclo) {
+                agm.agregarArista(aristaDeMenorPeso);
+                unionFind[raizDestino] = raizOrigen;
+                i++;
+            }
+        }
+        return agm;
+    }
+
+    private static int[] inicializarUnionFind(int cantidadVertices) {
+        int[] unionFind = new int[cantidadVertices];
+        for (int i = 0; i < cantidadVertices; i++) {
+            unionFind[i] = i;
+        }
+        return unionFind;
+    }
+
+    private static int unionFindRaizVertice(int[] unionFind, int vertice) {
+        while(unionFind[vertice] != vertice)
+            vertice = unionFind[vertice];
+
+        return vertice;
+    }
+
+
 }
