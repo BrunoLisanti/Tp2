@@ -104,11 +104,10 @@ public class Grafo {
         Arista masPesada = null;
         for (int i = 0; i < _matrizAdyacencia.length; i++) {
             for (int j = i; j < _matrizAdyacencia.length; j++) {
-                int pesoActual = _matrizAdyacencia[i][j];
+                Integer pesoActual = _matrizAdyacencia[i][j];
+                if (pesoActual == null) { continue; }
                 if (masPesada == null || pesoActual > masPesada.getPeso()) {
-                    masPesada.setOrigen(i);
-                    masPesada.setDestino(j);
-                    masPesada.setPeso(pesoActual);
+                    masPesada = new Arista(i,j,pesoActual);
                 }
 
             }
