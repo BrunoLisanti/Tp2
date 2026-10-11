@@ -72,36 +72,4 @@ public class GrafoTest {
 
         assertTrue(grafo1.comparar(grafo2));
     }
-
-    @Test
-    public void testObtenerMapaCon3RegionesDivideCorrectamente() {
-        Grafo grafoOriginal = new Grafo(6);
-
-        // Creamos la Región 1
-        grafoOriginal.agregarArista(0, 1, 10);
-
-        // Creamos la Región 2
-        grafoOriginal.agregarArista(2, 3, 15);
-
-        // Creamos la Región 3
-        grafoOriginal.agregarArista(4, 5, 20);
-
-        // Aristas mas pesadas que se borrarán.
-        grafoOriginal.agregarArista(1, 2, 100);
-        grafoOriginal.agregarArista(3, 4, 200);
-
-        // Arista que no pertenece al agm
-        grafoOriginal.agregarArista(0, 5, 500);
-
-        Grafo grafoEsperado = new Grafo(6);
-        grafoEsperado.agregarArista(0, 1, 10);
-        grafoEsperado.agregarArista(2, 3, 15);
-        grafoEsperado.agregarArista(4, 5, 20);
-
-        // 2. Act: Ejecutamos tu función
-        Grafo resultado = Grafo.obtenerMapaCon3Regiones(grafoOriginal);
-
-        // 3. Assert: Un único assert comprobando igualdad con tu método
-        assertTrue(resultado.comparar(grafoEsperado));
-    }
 }

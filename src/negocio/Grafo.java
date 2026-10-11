@@ -100,7 +100,7 @@ public class Grafo {
         return aristas;
     }
 
-    private Arista obtenerAristaMasPesada() {
+    public Arista obtenerAristaMasPesada() {
         Arista masPesada = null;
         for (int i = 0; i < _matrizAdyacencia.length; i++) {
             for (int j = i; j < _matrizAdyacencia.length; j++) {
@@ -113,21 +113,5 @@ public class Grafo {
             }
         }
         return masPesada;
-    }
-
-    // TODO: Esto quizás no debería estar en Grafo porque es muy propio de la aplicación.
-    static public Grafo obtenerMapaCon3Regiones(Grafo grafo) {
-
-        Grafo resultado = AGM.obtenerAGMConKruskalYUnionFind(grafo);
-
-        // 2. Elimino las k - 1 (k = 3) aristas mas pesadas;
-        // TODO: El tp dice que deberiamos hacer una función que elimine las "k" aristas mas pesadas, el tp pide que k sea 3, entonces
-        // TODO: directamente eliminé dos y chau, pero quizás habría que hacer una función que reciba un k y lo haga con cualquier cantidad.
-
-        resultado.eliminarArista(resultado.obtenerAristaMasPesada());
-        resultado.eliminarArista(resultado.obtenerAristaMasPesada());
-
-        // 3. Las k componentes conexas del grafo resultante son las regiones buscadas.
-        return resultado;
     }
 }

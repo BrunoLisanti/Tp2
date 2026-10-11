@@ -4,6 +4,7 @@ import negocio.BFS;
 import negocio.Grafo;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -47,4 +48,18 @@ public class BFSTests {
         grafo.agregarAristaSinPeso(1, 2);
         assertFalse(BFS.alcanzables(grafo, 0).isEmpty());
     }
+
+    @Test()
+    public void componentesConexasTest() {
+        Grafo grafo = new Grafo(5);
+        grafo.agregarAristaSinPeso(0, 1);
+        grafo.agregarAristaSinPeso(2, 3);
+        List<Set<Integer>> componentes = BFS.componentesConexas(grafo);
+
+        assertEquals(3, componentes.size());
+        assertTrue(componentes.contains(Set.of(0, 1)));
+        assertTrue(componentes.contains(Set.of(2, 3)));
+        assertTrue(componentes.contains(Set.of(4)));
+    }
+
 }
