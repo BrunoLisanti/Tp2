@@ -1,0 +1,73 @@
+# Instancia de ejemplo con las provincias de Argentina
+# Las similaridades son inventadas
+
+PROVINCIAS
+Jujuy
+Salta
+Tucumán
+Catamarca
+Santiago del Estero
+La Rioja
+Formosa
+Chaco
+Misiones
+Corrientes
+San Juan
+Mendoza
+San Luis
+Córdoba
+Santa Fe
+Entre Ríos
+Buenos Aires
+La Pampa
+Neuquén
+Río Negro
+Chubut
+Santa Cruz
+Tierra del Fuego
+
+SIMILARIDADES
+Jujuy,Salta,10
+Salta,Tucumán,15
+Salta,Catamarca,20
+Salta,Santiago del Estero,25
+Tucumán,Catamarca,12
+Tucumán,Santiago del Estero,18
+Catamarca,Santiago del Estero,22
+Catamarca,La Rioja,14
+Formosa,Chaco,10
+Chaco,Corrientes,20
+Misiones,Corrientes,15
+San Juan,Mendoza,12
+San Juan,San Luis,25
+Mendoza,San Luis,18
+Córdoba,Santa Fe,15
+Córdoba,Buenos Aires,20
+Córdoba,La Pampa,30
+Santa Fe,Entre Ríos,18
+Santa Fe,Buenos Aires,12
+Entre Ríos,Buenos Aires,22
+Buenos Aires,La Pampa,25
+Neuquén,Río Negro,10
+Río Negro,Chubut,20
+Chubut,Santa Cruz,15
+Santa Cruz,Tierra del Fuego,25
+Salta,Formosa,60
+Salta,Chaco,65
+Santiago del Estero,Chaco,55
+Santiago del Estero,Santa Fe,70
+Santiago del Estero,Córdoba,60
+Catamarca,Córdoba,75
+La Rioja,Córdoba,65
+La Rioja,San Juan,50
+La Rioja,San Luis,70
+Chaco,Santa Fe,60
+Corrientes,Santa Fe,70
+Corrientes,Entre Ríos,55
+San Luis,Córdoba,50
+San Luis,La Pampa,60
+Mendoza,La Pampa,75
+Mendoza,Neuquén,65
+La Pampa,Neuquén,70
+La Pampa,Río Negro,55
+Buenos Aires,Río Negro,80
