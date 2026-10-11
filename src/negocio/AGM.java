@@ -36,7 +36,7 @@ public class AGM {
 
             // Si faltan vértices por agregar pero no encontramos mas vecinos, el grafo no es conexo.
             if (verticeDestinoOptimo == null) {
-                throw new RuntimeException("El grafo no es conexo, no es posible hallar un AGM");
+                throw new IllegalArgumentException("El grafo no es conexo, no es posible hallar un AGM");
             }
 
             agm.agregarArista(verticeOrigenOptimo, verticeDestinoOptimo, pesoMinimo);
@@ -45,13 +45,17 @@ public class AGM {
         return agm;
     }
 
-    // TODO: Faltan chequeos de que el grafo sea conexo
     public static Grafo obtenerAGMConKruskalYBFS(Grafo grafo) {
         Grafo agm = new Grafo(grafo.obtenerTamano());
 
         PriorityQueue<Arista> aristasOrdenadas = grafo.obtenerAristasOrdenadas();
 
         for (int i = 0; i < grafo.obtenerTamano() - 1;) {
+            // Si se terminaron las aristas y el árbol no está completo, el grafo no es conexo.
+            if (aristasOrdenadas.isEmpty()) {
+                throw new IllegalArgumentException("El grafo no es conexo, no es posible hallar un AGM");
+            }
+
             //Obtener arista de menor peso
             Arista aristaDeMenorPeso = aristasOrdenadas.poll();
             //Chequear que no forme circuito con bfs;
@@ -65,7 +69,6 @@ public class AGM {
         return agm;
     }
 
-    // TODO: Faltan chequeos de que el grafo sea conexo
     static public Grafo obtenerAGMConKruskalYUnionFind(Grafo grafo) {
         Grafo agm = new Grafo(grafo.obtenerTamano());
 
@@ -73,7 +76,9 @@ public class AGM {
         int[] unionFind = inicializarUnionFind(grafo.obtenerTamano());
 
         for (int i = 0; i < grafo.obtenerTamano() - 1;) {
-            if (aristasOrdenadas.isEmpty()) { break; }
+            if (aristasOrdenadas.isEmpty()) {
+                throw new IllegalArgumentException("El grafo no es conexo, no es posible hallar un AGM");
+            }
 
             //Obtener arista de menor peso
             Arista aristaDeMenorPeso = aristasOrdenadas.poll();

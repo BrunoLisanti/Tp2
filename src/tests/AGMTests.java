@@ -58,4 +58,21 @@ public class AGMTests {
         Grafo agmAEvaluar = AGM.obtenerAGMConKruskalYUnionFind(grafo);
         assertTrue(agmAEvaluar.comparar(agmCorrecto));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void kruskalYBFSConGrafoNoConexoTest() {
+        AGM.obtenerAGMConKruskalYBFS(grafoNoConexo());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void kruskalYUnionFindConGrafoNoConexoTest() {
+        AGM.obtenerAGMConKruskalYUnionFind(grafoNoConexo());
+    }
+
+    private Grafo grafoNoConexo() {
+        Grafo grafo = new Grafo(4);
+        grafo.agregarArista(0, 1, 10);
+        grafo.agregarArista(2, 3, 20);
+        return grafo;
+    }
 }
