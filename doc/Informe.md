@@ -8,7 +8,7 @@
 		<p style="color: #666;">Trabajo Práctico 2</p> 
 	</div>
 	<div style="text-align: right;"> 
-		<p> <strong>Integrantes:</strong> Bruno Lisanti, Mateo Lauzán, Martín Godoy, Santino Tettamanti </p>
+		<p> <strong>Integrantes:</strong> Bruno Lisanti, Mateo Lauzan, Martín Godoy, Santino Tettamanti </p>
 		<p><strong>Materia:</strong> Programación III </p> 
 		<p><strong>Docentes:</strong> Daniel Bertaccini, Patricia Bagnes, Gonzalo Faccini</p>
 		<p><strong>Fecha:</strong> 11 de Octubre de 2026</p> 
